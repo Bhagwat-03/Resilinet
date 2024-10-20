@@ -1,36 +1,37 @@
-# ResilientNet for STM32F411RE
+# Resilinet
+
 
 ## Overview
-This project implements a simplified version of the ResilientNet architecture on the STM32F411RE microcontroller using bare-metal programming. The code provides a basic framework for initializing hardware and executing a forward pass of a neural network.
+
+This project implements a simple node management system using the STM32F411RE microcontroller. It includes functionalities for adding and removing nodes based on activity, while entering low-power mode when no nodes are active. The system also toggles an onboard LED to indicate activity.
 
 ## Features
-- **Bare-Metal Implementation**: No operating system is used, making it suitable for resource-constrained environments.
-- **GPIO Initialization**: Configures GPIO for LED blinking.
-- **Forward Pass**: A basic implementation of a forward pass through a fully connected layer.
 
-## Hardware Requirements
-- **STM32F411RE** development board
-- **LED** connected to pin PA5 (onboard LED on most boards)
+- Add and remove nodes dynamically based on activity.
+- Enter low-power mode when no nodes are active.
+- Onboard LED indicates activity by blinking.
+- Button interrupt simulates the addition of new nodes.
 
 ## Usage
 
 1. Connect your STM32F411RE board to your computer.
 2. Flash the binary to the board.
-3. Upon powering the board, the onboard LED connected to PA5 will blink at a predefined rate, indicating that the forward pass function is being executed.
+3. Upon powering the board, press the button connected to PC13 to add a new node. The onboard LED connected to PA5 will blink, indicating activity.
 
 ## Customization
 
-- You can modify the weights and biases arrays in `main.c` to experiment with different neural network configurations.
-- Add activation functions and additional layers to expand the functionality of the ResilientNet implementation.
+- You can modify the `MAX_NODES` definition to change the maximum number of nodes.
+- Adjust the `TIMEOUT` value to set the inactive node timeout period.
+- Modify the LED pin configuration in the `GPIO_Init` function if you are using a different pin.
 
 ## Troubleshooting
 
-- Ensure that the correct GPIO pin is configured for the LED.
+- Ensure that the correct GPIO pin is configured for the LED and button.
 - Verify that the toolchain is properly installed and added to your system's PATH.
 - If the LED does not blink, check your connections and ensure that the code has been flashed correctly.
 
 ## Acknowledgments
 
-This project is inspired by neural network architectures and embedded systems programming.
+This project demonstrates basic node management techniques and low-power operation using STM32 microcontrollers.
 
 Feel free to reach out if you have any questions or feedback.
